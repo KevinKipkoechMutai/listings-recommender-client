@@ -1,0 +1,94 @@
+<div class="create-listing-container">
+    <h2>Add a New Listing</h2>
+    
+    <form (ngSubmit)="onSubmit()" #listingForm="ngForm">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          class="form-control"
+          [(ngModel)]="listing.title"
+          required
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="location">Location</label>
+        <input
+          type="text"
+          id="location"
+          name="location"
+          class="form-control"
+          [(ngModel)]="listing.location"
+          required
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="price_cash">Price (Cash)</label>
+        <input
+          type="number"
+          id="price_cash"
+          name="price_cash"
+          class="form-control"
+          [(ngModel)]="listing.price_cash"
+          required
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="price_mortgage">Price (Mortgage)</label>
+        <input
+          type="number"
+          id="price_mortgage"
+          name="price_mortgage"
+          class="form-control"
+          [(ngModel)]="listing.price_mortgage"
+          required
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="development_status">Development Status</label>
+        <select
+          id="development_status"
+          name="development_status"
+          class="form-control"
+          [(ngModel)]="listing.development_status"
+          required
+        >
+          <option value="completed">Completed</option>
+          <option value="under_construction">Under Construction</option>
+          <option value="offplan">Off Plan</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea
+          id="description"
+          name="description"
+          class="form-control"
+          [(ngModel)]="listing.description"
+          required
+        ></textarea>
+      </div>
+  
+      <div class="form-group">
+        <label for="image_url">Image URL</label>
+        <input
+          type="text"
+          id="image_url"
+          name="image_url"
+          class="form-control"
+          [(ngModel)]="listing.image_url"
+          required
+        />
+      </div>
+  
+      <button type="submit" class="btn btn-primary" [disabled]="!listingForm.form.valid">Create Listing</button>
+    </form>
+  </div>
+  

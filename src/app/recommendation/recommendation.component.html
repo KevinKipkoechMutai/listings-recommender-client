@@ -1,0 +1,56 @@
+<div class="recommendations">
+    <h2>Recommended Listings</h2>
+    <form (ngSubmit)="fetchRecommendations()">
+        <div class="input-field">
+            <label for="salary">Enter Your Salary:</label>
+            <input id="salary" type="number" [(ngModel)]="salary" placeholder="Salary" name="salary" />
+        </div>
+        <div class="input-field">
+            <label for="savings">Enter Your Savings:</label>
+            <input id="savings" type="number" [(ngModel)]="savings" placeholder="Savings" name="savings" />
+        </div>
+        <div class="input-field">
+            <label for="existing_loans"> Enter Existing Loans:</label>
+            <input id="existing_loans" type="number" [(ngModel)]="existing_loans" placeholder="Loans" name="existing_loans" />
+        </div>   
+      <button type="submit">Get Recommendations</button>
+    </form>
+  
+    <div *ngIf="loading">Loading recommendations...</div>
+  
+    <div class="recommendations-list" *ngIf="!loading">
+      <div class="column">
+        <h3>Affordable Mortgage Listings</h3>
+        <div *ngIf="cashListings.length === 0">No cash-affordable listings found.</div>
+        
+        <div>
+          @for (listing of cashListings; track listing.id) {
+            <div class="listing-card">
+              <img class="listing-image" [src]="listing.image_url" alt="{{ listing.title }}" />
+              <h4>{{ listing.title }}</h4>
+              <p>{{ listing.location }}</p>
+              <p>Cash Price: Ksh. {{ listing.price_cash }}</p>
+            </div>
+          }
+        </div>
+      </div>
+
+
+      <div class="column">
+        <h3>Affordable Mortgage Listings</h3>
+        <div *ngIf="mortgageListings.length === 0">No mortgage-affordable listings found.</div>
+        
+        <div>
+          @for (listing of mortgageListings; track listing.id) {
+            <div class="listing-card">
+              <img class="listing-image" [src]="listing.image_url" alt="{{ listing.title }}" />
+              <h4>{{ listing.title }}</h4>
+              <p>{{ listing.location }}</p>
+              <p>Mortage Price: Ksh. {{ listing.price_mortgage }}</p>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+  

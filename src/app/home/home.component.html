@@ -1,0 +1,32 @@
+<div class="hero">
+  <h1>Get Property Recommendations Based on Your Savings and Disposable Income</h1>
+</div>
+
+<div class="listings-section">
+  <h2>All Listings</h2>
+  <p *ngIf="!listings.length">Loading...</p>
+
+  <div *ngIf="listings.length > 0" class="listings-grid">
+    <div *ngFor="let listing of listings; trackBy: trackById" class="listing-card">
+      <div class="listing-image">
+        <img class="listing-image" [src]="listing.image_url" alt="Listing Image" />
+      </div>
+      <div class="listing-content">
+        <h3>{{ listing.title }}</h3>
+        <p class="location"> Location: {{ listing.location }}</p>
+        <p class="price">Cash Price: Ksh. {{ listing.price_cash | number }}</p>
+        <p class="price">Mortgage Price: Ksh. {{ listing.price_mortgage | number }}</p>
+        <div class="status-badge" [class]="listing.development_status.toLowerCase()">
+          Status: {{ listing.development_status }}
+        </div>
+        <button class="delete-btn" (click)="deleteListing(listing.id!)">
+          <i class="fas fa-trash"></i> Delete
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <button routerLink="/create-listing" class="create-btn">
+    <i class="fas fa-plus"></i> Add New Listing
+  </button>
+</div>
