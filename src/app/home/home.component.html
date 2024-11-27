@@ -20,13 +20,13 @@
           Status: {{ listing.development_status }}
         </div>
         <button class="delete-btn" (click)="deleteListing(listing.id!)">
-          <i class="fas fa-trash"></i> Delete
+          Delete
         </button>
       </div>
     </div>
   </div>
 
-  <button routerLink="/create-listing" class="create-btn">
-    <i class="fas fa-plus"></i> Add New Listing
+  <button routerLink="create-listing" class="create-btn">
+     Add New Listing
   </button>
 </div>
